@@ -28,17 +28,17 @@ stages:
     pool:
       vmImage: $(vmImageName)
     steps:
-    - task: Maven@3
+    - task: Maven@4
       inputs:
-       mavenPomFile: 'pom.xml'
-       mavenOptions: '-Xmx3072m'
-       javaHomeOption: 'JDKVersion'
-       jdkVersionOption: '1.17'
-       jdkArchitectureOption: 'x64'
-       publishJUnitResults: true
-       testResultsFiles: '**/surefire-reports/TEST-*.xml'
-       goals: 'package'
-    
+        mavenPomFile: 'pom.xml'
+        publishJUnitResults: true
+        testResultsFiles: '**/surefire-reports/TEST-*.xml'
+        javaHomeOption: 'JDKVersion'
+        mavenVersionOption: 'Default'
+        mavenAuthenticateFeed: false
+        effectivePomSkip: false
+        sonarQubeRunAnalysis: false
+
     - task: CopyFiles@2
       inputs:
         Contents: 'target/*.jar'
@@ -58,3 +58,5 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
+
+
