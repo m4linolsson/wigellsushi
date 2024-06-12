@@ -1,4 +1,5 @@
-FROM ubuntu:latest
-LABEL authors="m4lin"
+FROM openjdk:17-alpine
 
-ENTRYPOINT ["top", "-b"]
+COPY target/*.jar /home/app/Wigellsushi.jar
+
+ENTRYPOINT [ "java", "-jar", "/home/app/Wigellsushi.jar" ]
