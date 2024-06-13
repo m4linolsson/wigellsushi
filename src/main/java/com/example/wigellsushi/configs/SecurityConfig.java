@@ -39,7 +39,7 @@ public class SecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-//        UserDetails user = User.withDefaultPasswordEncoder()
+//      UserDetails user = User.withDefaultPasswordEncoder()
         UserDetails user = User.withUsername("anna")
 //                .username("anna")
                 .password("")
