@@ -28,14 +28,18 @@ stages:
     pool:
       vmImage: $(vmImageName)
     steps:
-    - task: MysqlDeploymentOnMachineGroup@1
+
+    - task: AzureMysqlDeployment@1
       inputs:
-        TaskNameSelector: 'SqlTaskFile'
-        SqlFile: 'spring.datasource.url=jdbc:mysql://localhost:3306/wigellsdb'
-        ServerName: 'localhost'
+        azureSubscription: 'Azure for Students(d0a68ed7-e33c-4c74-b9f9-96dbd332c60a)'
+        ServerName: 'wigellsdatabase.mysql.database.azure.com'
         DatabaseName: 'wigellsdb'
-        SqlUsername: 'jenny'
-        SqlPassword: 'jenny'
+        SqlUsername: 'malin'
+        SqlPassword: 'Nilam123'
+        TaskNameSelector: 'SqlTaskFile'
+        SqlFile: 'src/main/resources/data.sql'
+        IpDetectionMethod: 'AutoDetect'
+
     - task: Maven@3
       inputs:
        mavenVersionOption: "default"
