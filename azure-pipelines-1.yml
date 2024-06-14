@@ -28,6 +28,14 @@ stages:
     pool:
       vmImage: $(vmImageName)
     steps:
+    - task: MysqlDeploymentOnMachineGroup@1
+      inputs:
+        TaskNameSelector: 'SqlTaskFile'
+        SqlFile: 'src/main/resources/data.sql'
+        ServerName: 'localhost'
+        DatabaseName: 'wigellsdb'
+        SqlUsername: 'jenny'
+        SqlPassword: 'jenny'
     - task: Maven@3
       inputs:
        mavenVersionOption: "default"
