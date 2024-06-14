@@ -37,7 +37,7 @@ stages:
         SqlUsername: 'malin'
         SqlPassword: 'Nilam123'
         TaskNameSelector: 'SqlTaskFile'
-        SqlFile: 'src/main/resources/data.sql'
+        SqlFile: '$(Build.SourcesDirectory)/src/main/resources/data.sql'
         IpDetectionMethod: 'AutoDetect'
 
     - task: Maven@3
