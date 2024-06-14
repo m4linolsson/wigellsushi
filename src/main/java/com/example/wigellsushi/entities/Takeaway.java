@@ -22,7 +22,7 @@ public class Takeaway {
     private Customer customer;
 
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL) //vill inte ha remove
     @JoinTable(name = "Takeaway_Dishes",
             joinColumns = @JoinColumn(referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(referencedColumnName = "id"))

@@ -23,7 +23,7 @@ VALUES ('California 11', 99),
        ('Dumpling', 119),
        ('Poke bowl', 119),
        ('Kyckling teriyaky', 119),
-       ('Beto', 129);
+       ('Bento', 129);
 
 
 
@@ -42,7 +42,7 @@ VALUES (1, 1),
 
 
 INSERT INTO Booking (start_time, end_time, number_of_guests, customer_id, room_id) --ska lägga till dishes och fixa totalpris
-VALUES ('nu', 'sen', 5, 1, 1),
+VALUES ('nu', 'sen', 4, 1, 1),
        ('sen', 'senare', 4, 4, 2);
 
 INSERT INTO Booking_Dishes(booking_id, dishes_id)
