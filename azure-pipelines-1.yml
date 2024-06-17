@@ -30,16 +30,6 @@ stages:
     steps:
 
 
-    - task: AzureMysqlDeployment@1
-      inputs:
-        azureSubscription: 'Azure for Students(d0a68ed7-e33c-4c74-b9f9-96dbd332c60a)'
-        ServerName: 'wigellsdatabase.mysql.database.azure.com'
-        DatabaseName: 'wigellsdb'
-        SqlUsername: 'malin'
-        SqlPassword: 'Nilam123'
-        TaskNameSelector: 'SqlTaskFile'
-        SqlFile: '$(agent.releaseDirectory)'
-        IpDetectionMethod: 'AutoDetect'
     - task: Maven@3
       inputs:
        mavenVersionOption: "default"
