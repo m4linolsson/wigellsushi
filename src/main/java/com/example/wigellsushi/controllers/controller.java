@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping()
+@RequestMapping("/good")
 public class controller {
 
 
@@ -35,7 +35,7 @@ public class controller {
         return "welcome";
     }
 
-    @GetMapping("/goodluck")
+    @GetMapping("/luck")
     public String goodLuck() {
         return "Lycka till på första dagen! Älskar dig :*";
     }
