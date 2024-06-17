@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/sushi")
+@RequestMapping()
 public class controller {
 
 
@@ -35,6 +35,10 @@ public class controller {
         return "welcome";
     }
 
+    @GetMapping("/goodluck")
+    public String goodLuck() {
+        return "Lycka till på första dagen! Älskar dig :*";
+    }
 
     @GetMapping("/takeaway")
     public List<Takeaway> getTakeaway() {
@@ -62,7 +66,7 @@ public class controller {
 
 
           -lägga till loggning på allt
-          - driftsätta....
+          - driftsätta.... wohooo
           - API med priser
      */
 }
