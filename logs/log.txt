@@ -71,3 +71,4 @@
 2024-06-18 12:35:44,196 : WARN : org.hibernate.orm.deprecation: constructDialect : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
 2024-06-18 12:36:15,403 : WARN : org.hibernate.orm.deprecation: constructDialect : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
 2024-06-18 14:28:42,796 : WARN : org.hibernate.orm.deprecation: constructDialect : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-18 14:30:40,497 : WARN : org.hibernate.orm.deprecation: constructDialect : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)

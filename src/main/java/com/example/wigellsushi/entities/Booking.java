@@ -39,8 +39,8 @@ public class Booking {
     @Column(columnDefinition = "DECIMAL(10,2) DEFAULT 0.0")
     private double totalPrice;
 
-    @Column(columnDefinition = "DECIMAL(10,2) DEFAULT 0.0")
-    private double totalPriceEUR;
+//    @Column(columnDefinition = "DECIMAL(10,2) DEFAULT 0.0")
+//    private double totalPriceEUR;
     public Booking() {
     }
 
@@ -118,12 +118,12 @@ public class Booking {
         this.totalPrice = totalPrice;
     }
 
-
-    public double getTotalPriceEUR() {
-        return totalPriceEUR;
-    }
-
-    public void setTotalPriceEUR(double totalPriceEUR) {
-        this.totalPriceEUR = totalPriceEUR;
-    }
+//
+//    public double getTotalPriceEUR() {
+//        return totalPriceEUR;
+//    }
+//
+//    public void setTotalPriceEUR(double totalPriceEUR) {
+//        this.totalPriceEUR = totalPriceEUR;
+//    }
 }

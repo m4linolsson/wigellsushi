@@ -45,8 +45,8 @@ public class BookingService implements BookingServiceInterface {
 //        } else throw new ResourceNotFound("Customer", "username", customer.getUserName());
 //    }
 
-    @Autowired
-    RestTemplate restTemplate;
+//    @Autowired
+//    RestTemplate restTemplate;
 
     @Override
     public List<Booking> getMyBookings(Customer customer) {
@@ -54,7 +54,7 @@ public class BookingService implements BookingServiceInterface {
         if (customerToListBookings.isPresent()) {
 
           //  System.out.println(restTemplate.getForObject("http://localhost:7070/v6/1c5fb295f62bb439ba29f893/pair/EUR/GBP", String.class));
-            System.out.println(restTemplate.getForObject("http://WIGELL-TRAVEL-GATEWAY/v6/1c5fb295f62bb439ba29f893/pair/EUR/GBP", String.class));
+//            System.out.println(restTemplate.getForObject("http://WIGELL-TRAVEL-GATEWAY/v6/1c5fb295f62bb439ba29f893/pair/EUR/GBP", String.class));
 //            JSONPObject jp=
 ////            JsonObjectDeserializer jsonObjectDeserializer=
 //          String converter  restTemplate.getForObject("http://WIGELL-TRAVEL-GATEWAY/v6/1c5fb295f62bb439ba29f893/pair/EUR/GBP", JSONPObject.class);
