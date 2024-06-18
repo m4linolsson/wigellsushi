@@ -9,9 +9,12 @@ import com.example.wigellsushi.repositories.BookingRepository;
 import com.example.wigellsushi.repositories.CustomerRepository;
 import com.example.wigellsushi.repositories.DishRepository;
 import com.example.wigellsushi.repositories.RoomRepository;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.jackson.JsonObjectDeserializer;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -52,8 +55,11 @@ public class BookingService implements BookingServiceInterface {
 
           //  System.out.println(restTemplate.getForObject("http://localhost:7070/v6/1c5fb295f62bb439ba29f893/pair/EUR/GBP", String.class));
             System.out.println(restTemplate.getForObject("http://WIGELL-TRAVEL-GATEWAY/v6/1c5fb295f62bb439ba29f893/pair/EUR/GBP", String.class));
-            System.out.println("price in euro: "); // ev ha price som map
+//            JSONPObject jp=
+////            JsonObjectDeserializer jsonObjectDeserializer=
+//          String converter  restTemplate.getForObject("http://WIGELL-TRAVEL-GATEWAY/v6/1c5fb295f62bb439ba29f893/pair/EUR/GBP", JSONPObject.class);
 
+            System.out.println("price in euro: "); // ev ha price som map
 
             return bookingRepository.findAllByCustomer_UserName(customer.getUserName());
         } else throw new ResourceNotFound("Customer", "username", customer.getUserName());

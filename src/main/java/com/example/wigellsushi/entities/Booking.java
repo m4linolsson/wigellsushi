@@ -1,7 +1,9 @@
 package com.example.wigellsushi.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import jakarta.persistence.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -37,6 +39,8 @@ public class Booking {
     @Column(columnDefinition = "DECIMAL(10,2) DEFAULT 0.0")
     private double totalPrice;
 
+    @Column(columnDefinition = "DECIMAL(10,2) DEFAULT 0.0")
+    private double totalPriceEUR;
     public Booking() {
     }
 
@@ -112,5 +116,14 @@ public class Booking {
 
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+
+    public double getTotalPriceEUR() {
+        return totalPriceEUR;
+    }
+
+    public void setTotalPriceEUR(double totalPriceEUR) {
+        this.totalPriceEUR = totalPriceEUR;
     }
 }
