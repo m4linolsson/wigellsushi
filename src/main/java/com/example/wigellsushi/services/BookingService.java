@@ -9,9 +9,13 @@ import com.example.wigellsushi.repositories.BookingRepository;
 import com.example.wigellsushi.repositories.CustomerRepository;
 import com.example.wigellsushi.repositories.DishRepository;
 import com.example.wigellsushi.repositories.RoomRepository;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
+import javax.sound.midi.Soundbank;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -27,10 +31,30 @@ public class BookingService implements BookingServiceInterface {
     @Autowired
     DishRepository dishRepository;
 
+
+    Logger logger = Logger.getLogger(BookingService.class);
+
+//    @Override
+//    public List<Booking> getMyBookings(Customer customer) {
+//        Optional<Customer> customerToListBookings = customerRepository.findByUserName(customer.getUserName());
+//        if (customerToListBookings.isPresent()) {
+//            return bookingRepository.findAllByCustomer_UserName(customer.getUserName());
+//        } else throw new ResourceNotFound("Customer", "username", customer.getUserName());
+//    }
+
+    @Autowired
+    RestTemplate restTemplate;
+
     @Override
     public List<Booking> getMyBookings(Customer customer) {
         Optional<Customer> customerToListBookings = customerRepository.findByUserName(customer.getUserName());
         if (customerToListBookings.isPresent()) {
+
+          //  System.out.println(restTemplate.getForObject("http://localhost:7070/v6/1c5fb295f62bb439ba29f893/pair/EUR/GBP", String.class));
+            System.out.println(restTemplate.getForObject("http://WIGELL-TRAVEL-GATEWAY/v6/1c5fb295f62bb439ba29f893/pair/EUR/GBP", String.class));
+            System.out.println("price in euro: "); // ev ha price som map
+
+
             return bookingRepository.findAllByCustomer_UserName(customer.getUserName());
         } else throw new ResourceNotFound("Customer", "username", customer.getUserName());
     }
@@ -53,6 +77,7 @@ public class BookingService implements BookingServiceInterface {
             booking.setRoom(room);
             booking.setDishes(dishes);
             bookingRepository.save(booking);
+            logger.log(Level.WARN, "Customer with id: " + customer.getId() + " booked room with id: " + room.getId());
             return "Booking created";
         }
         return "Failed to book room, maximum number of guests exceeded";
@@ -78,6 +103,7 @@ public class BookingService implements BookingServiceInterface {
             bookingToUpdate.setRoom(room);
             bookingToUpdate.setDishes(dishes);
             bookingRepository.save(bookingToUpdate);
+            logger.log(Level.WARN, "Customer with id: " + customer.getId() + " updated booking with id: " + bookingToUpdate.getId());
             return "Booking updated";
         }
         return "Failed to update room, maximum number of guests exceeded";

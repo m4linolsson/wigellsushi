@@ -65,8 +65,13 @@ public class controller {
         -uppdatera lokal***
 
 
-          -lägga till loggning på allt
-          - driftsätta.... wohooo
+          -lägga till loggning på allt ***
+          - driftsätta.... wohooo***
           - API med priser
+          -koppla ihop med gateway/server
+
+- lägga till private på alla autowired?
+-lägga till lenght
+
      */
 }

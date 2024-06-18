@@ -1,22 +1,26 @@
 package com.example.wigellsushi;
 
-//import org.apache.log4j.Level;
-//import org.apache.log4j.Logger;
-
-import com.example.wigellsushi.entities.Takeaway;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 public class WigellSushiApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(WigellSushiApplication.class, args);
-//        Logger logger = Logger.getLogger(WigellSushiApplication.class);
-//        logger.log(Level.WARN, "slut");
         System.out.println("tweet tweet");
 
 
+    }
+
+    //Gör att vi kan
+    @Bean
+    @LoadBalanced //säger att vi ska använda en loadbalancer client (ex eureka) så vi kan använda service name i url ist för host och port...
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 
 
