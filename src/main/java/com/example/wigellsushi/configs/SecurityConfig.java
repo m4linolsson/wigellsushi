@@ -27,7 +27,6 @@ public class SecurityConfig {
                          .dispatcherTypeMatchers(DispatcherType.ERROR).permitAll()
                                 .anyRequest().permitAll());
 
-
         http
                 .formLogin(Customizer.withDefaults())   //inloggningsformulär via webbläsaren
                 .httpBasic(Customizer.withDefaults()); //via postman
@@ -42,7 +41,6 @@ public class SecurityConfig {
     @Bean
     public UserDetailsService userDetailsService() {
         UserDetails user = User.withDefaultPasswordEncoder()
-//        UserDetails user = User.withUsername("anna")
                 .username("anna")
                 .password("anna")
                 .roles("USER")

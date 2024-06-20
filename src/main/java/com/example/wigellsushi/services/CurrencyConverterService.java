@@ -14,15 +14,17 @@ public class CurrencyConverterService {
     private RestTemplate restTemplate;
 
     public double convertSEKToEUR(double amount) {
-        // Länk till converter api
+        // Länk till  api converter
         //https://www.exchangerate-api.com/docs/overview
 
-
         //Gå via local gateway
-        String url = "http://localhost:7070/v6/1c5fb295f62bb439ba29f893/pair/SEK/EUR/" + amount;
+        //String url = "http://localhost:7070/v6/1c5fb295f62bb439ba29f893/pair/SEK/EUR/" + amount;
 
         //Gå direkt via apiets hemsida
         //String url = "https://v6.exchangerate-api.com/v6/1c5fb295f62bb439ba29f893/pair/SEK/EUR/" + amount;
+
+        //Gå via vår gemensamma gateway
+        String url = "https://cloud-gateway.azurewebsites.net/v6/1c5fb295f62bb439ba29f893/pair/SEK/EUR/" + amount;
 
         ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
 
@@ -38,7 +40,6 @@ public class CurrencyConverterService {
                 System.out.println(e);
                 return 0;
             }
-
         } else throw new RuntimeException("Failed to load response for exchangerate");
     }
 }
