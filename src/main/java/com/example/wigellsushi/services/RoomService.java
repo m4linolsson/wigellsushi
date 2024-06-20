@@ -11,14 +11,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class RoomService implements RoomServiceInterface {
     @Autowired
-    RoomRepository roomRepository;
-    Logger logger = Logger.getLogger(RoomService.class);
+    private RoomRepository roomRepository;
+    private Logger logger = Logger.getLogger(RoomService.class);
 
     @Override
     public String updateRoom(Long id, Room room) {
-        // om rummet finns spara det..
-
-
         Room roomToUpdate = roomRepository.findById(id).orElseThrow(() -> new ResourceNotFound("Room", "id", id));
         roomToUpdate.setId(id);
         roomToUpdate.setEquipment(room.getEquipment());
@@ -26,6 +23,5 @@ public class RoomService implements RoomServiceInterface {
         roomRepository.save(roomToUpdate);
         logger.log(Level.WARN, "Room with id: " + id + " has been updated");
         return "Room updated";
-
     }
 }

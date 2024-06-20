@@ -19,36 +19,9 @@ import java.util.List;
 public class controller {
 
 
-    @Autowired
-    BookingRepository bookingRepository;
-    @Autowired
-    DishRepository dishRepository;
-
-    @Autowired
-    TakeAwayRepository takeAwayRepository;
-
-    Logger logger = Logger.getLogger(controller.class);
-
-    @GetMapping("/welcome")
-    public String welcome() {
-        logger.log(Level.FATAL, "test");
-        return "welcome";
-    }
-
     @GetMapping("/luck")
     public String goodLuck() {
         return "Lycka till på första dagen! Älskar dig :*";
-    }
-
-    @GetMapping("/takeaway")
-    public List<Takeaway> getTakeaway() {
-        return takeAwayRepository.findAll();
-    }
-
-
-    @GetMapping("/bookings")
-    public List<Booking> getBookings() {
-        return bookingRepository.findAll();
     }
 
 
@@ -61,17 +34,20 @@ public class controller {
         ADMIN
         -lista kunder ***
         - lägga till maträtt ***
-        -ta bort rätt ERROR- kopplingarna emellan är fel...
+        -ta bort rätt ***
         -uppdatera lokal***
 
 
           -lägga till loggning på allt ***
           - driftsätta.... wohooo***
-          - API med priser
-          -koppla ihop med gateway/server
+          - API med priser**
+          -koppla ihop med gateway/server**
 
-- lägga till private på alla autowired?
--lägga till lenght
+- lägga till private på alla autowired***
+-lägga till lenght**
 
+TODO kolla så alla endopoint preauthorizer är i versaler!! ADMIN**
+
+ev kolla närmare på delete funktionen, nu ändras ju inte totalpris fast att rätter tas bort...
      */
 }

@@ -6,7 +6,7 @@ VALUES ('aa', 'Anna', 'Andersson', 'matnäs 3', 'annaandersson@gmail.com', '070 
        ('ee', 'Erik', 'Ek', 'Drottninggatan 5', 'ee@gmail.com', '070 10 10 100 ')
 ;
 
-INSERT INTO Room (max_number_of_guests, equipment) --har inte lagt till bookings, det får läggas till med booking id..
+INSERT INTO Room (max_number_of_guests, equipment)
 VALUES (4, 'tv'),
        (8, 'karaoke'),
        (4, 'karaoke'),
@@ -27,13 +27,12 @@ VALUES ('California 11', 99),
 
 
 
-INSERT INTO Takeaway (time_for_pickup, customer_id)
-VALUES ('2024-06-21-22:22', 1),
-       ('2024-06-22-16:22', 3);
+INSERT INTO Takeaway (time_for_pickup, customer_id, total_price_sek, total_price_eur)
+VALUES ('2024-06-21-22:22', 1,447,39.83),
+       ('2024-06-22-16:22', 3,663,59.01);
 
 INSERT INTO Takeaway_Dishes(takeaway_id, dishes_id)
 VALUES (1, 1),
-       (1, 2),
        (1, 2),
        (1, 4),
        (2, 3),
@@ -41,9 +40,9 @@ VALUES (1, 1),
        (2, 8);
 
 
-INSERT INTO Booking (start_time, end_time, number_of_guests, customer_id, room_id) --ska lägga till dishes och fixa totalpris
-VALUES ('nu', 'sen', 4, 1, 1),
-       ('sen', 'senare', 4, 4, 2);
+INSERT INTO Booking (start_time, end_time, number_of_guests, customer_id, room_id, total_price_sek, total_price_eur)
+VALUES ('nu', 'sen', 4, 1, 1, 575.0, 51.24),
+       ('sen', 'senare', 4, 4, 2, 644.0, 57.39);
 
 INSERT INTO Booking_Dishes(booking_id, dishes_id)
 values (1, 1),

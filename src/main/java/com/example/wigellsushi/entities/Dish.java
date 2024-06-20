@@ -9,9 +9,10 @@ public class Dish {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column (length = 25,nullable = false)
 
     private String dishName;
-
+    @Column (nullable = false)
     private double price;
 
     public Dish() {

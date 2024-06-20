@@ -14,23 +14,23 @@ import java.util.List;
 @RequestMapping("/api/v3")
 public class BookingController {
     @Autowired
-    BookingService bookingService;
+    private BookingService bookingService;
 
 
     @GetMapping("/mybookings")
-    @PreAuthorize("hasRole('user')")
+    @PreAuthorize("hasRole('USER')")
     public ResponseEntity<List<Booking>> getMyBookings(@RequestBody Customer customer) {
         return ResponseEntity.ok(bookingService.getMyBookings(customer));
     }
 
     @PostMapping("/bookroom")
-    @PreAuthorize("hasRole('user')")
+    @PreAuthorize("hasRole('USER')")
     public ResponseEntity<String> bookRoom(@RequestBody Booking booking) {
         return ResponseEntity.ok(bookingService.bookRoom(booking));
     }
 
     @PutMapping("/updatebooking/{id}")
-    @PreAuthorize("hasRole('user')")
+    @PreAuthorize("hasRole('USER')")
     public ResponseEntity<String> updateBooking(@PathVariable Long id, @RequestBody Booking booking) {
         return ResponseEntity.ok(bookingService.updateBooking(id, booking));
     }

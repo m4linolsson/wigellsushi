@@ -10,9 +10,10 @@ public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column (nullable = false)
     private int maxNumberOfGuests;
 
+    @Column (nullable = false)
     private String equipment; //kareoke, tv, microphone etc
 
     @JsonIgnoreProperties("room")

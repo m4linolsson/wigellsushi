@@ -1,26 +1,26 @@
 package com.example.wigellsushi.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import jakarta.persistence.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
-//TODO stuntar i att kolla om den är bokad eller inte, kan bli dubbelbokning nu men inte där fokus är...
 @Entity
 public class Booking {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(length = 20, nullable = false)
     private String startTime;
+    @Column(length = 20, nullable = false)
     private String endTime;
-
+    @Column(length = 3, nullable = false)
     private int numberOfGuests;
 
-    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "BookingDishes",
             joinColumns = @JoinColumn(referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(referencedColumnName = "id"))
@@ -37,21 +37,23 @@ public class Booking {
     private Room room;
 
     @Column(columnDefinition = "DECIMAL(10,2) DEFAULT 0.0")
-    private double totalPrice;
+    private double totalPriceSek;
 
-//    @Column(columnDefinition = "DECIMAL(10,2) DEFAULT 0.0")
-//    private double totalPriceEUR;
+    @Column(columnDefinition = "DECIMAL(10,2) DEFAULT 0.0")
+    private double totalPriceEur;
+
     public Booking() {
     }
 
-    public Booking(String startTime, String endTime, int numberOfGuests, List<Dish> dishes, Customer customerOfBooking, Room room, double totalPrice) {
+    public Booking(String startTime, String endTime, int numberOfGuests, List<Dish> dishes, Customer customer, Room room, double totalPriceSek, double totalPriceEur) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.numberOfGuests = numberOfGuests;
         this.dishes = dishes;
-        this.customer = customerOfBooking;
+        this.customer = customer;
         this.room = room;
-        this.totalPrice = totalPrice;
+        this.totalPriceSek = totalPriceSek;
+        this.totalPriceEur = totalPriceEur;
     }
 
     public Long getId() {
@@ -110,20 +112,22 @@ public class Booking {
         this.room = room;
     }
 
-    public double getTotalPrice() {
-        return dishes.stream().mapToDouble(Dish::getPrice).sum();
+    public double getTotalPriceSek() {
+        return totalPriceSek;
     }
 
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
+
+    public void setTotalPriceSek(double totalPriceSek) {
+        this.totalPriceSek = totalPriceSek;
     }
 
-//
-//    public double getTotalPriceEUR() {
-//        return totalPriceEUR;
-//    }
-//
-//    public void setTotalPriceEUR(double totalPriceEUR) {
-//        this.totalPriceEUR = totalPriceEUR;
-//    }
+    public double getTotalPriceEur() {
+        return totalPriceEur;
+    }
+
+
+    public void setTotalPriceEur(double totalPriceEur) {
+        this.totalPriceEur = totalPriceEur;
+    }
+
 }

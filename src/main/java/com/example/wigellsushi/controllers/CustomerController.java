@@ -2,7 +2,6 @@ package com.example.wigellsushi.controllers;
 
 import com.example.wigellsushi.entities.Customer;
 import com.example.wigellsushi.services.CustomerService;
-import org.apache.http.protocol.HTTP;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -16,11 +15,11 @@ import java.util.List;
 @RequestMapping("/api/v3")
 public class CustomerController {
     @Autowired
-    CustomerService customerService;
+    private CustomerService customerService;
 
 
     @GetMapping("/customers")
-    @PreAuthorize("hasRole('admin')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<Customer>> getCustomers() {
         return ResponseEntity.ok(customerService.getCustomers());
     }

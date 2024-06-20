@@ -10,12 +10,14 @@ public class Takeaway {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
+    @Column (length = 20,nullable = false)
     private String timeForPickup;
 
     @Column(columnDefinition = "DECIMAL(10,2) DEFAULT 0.0")
-    private double totalPrice;
+    private double totalPriceSek;
 
+    @Column(columnDefinition = "DECIMAL(10,2) DEFAULT 0.0")
+    private double totalPriceEur;
     @JsonIgnoreProperties("bookings")
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(referencedColumnName = "id")
@@ -31,9 +33,10 @@ public class Takeaway {
     public Takeaway() {
     }
 
-    public Takeaway(String timeForPickup, double totalPrice, Customer customer, List<Dish> dishes) {
+    public Takeaway(String timeForPickup, double totalPriceSek, double totalPriceEur, Customer customer, List<Dish> dishes) {
         this.timeForPickup = timeForPickup;
-        this.totalPrice = totalPrice;
+        this.totalPriceSek = totalPriceSek;
+        this.totalPriceEur = totalPriceEur;
         this.customer = customer;
         this.dishes = dishes;
     }
@@ -55,12 +58,20 @@ public class Takeaway {
         this.timeForPickup = timeForPickup;
     }
 
-    public double getTotalPrice() {
-        return dishes.stream().mapToDouble(Dish::getPrice).sum();
+    public double getTotalPriceSek() {
+        return totalPriceSek;
     }
 
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setTotalPriceSek(double totalPriceSek) {
+        this.totalPriceSek = totalPriceSek;
+    }
+
+    public double getTotalPriceEur() {
+        return totalPriceEur;
+    }
+
+    public void setTotalPriceEur(double totalPriceEur) {
+        this.totalPriceEur = totalPriceEur;
     }
 
     public Customer getCustomer() {

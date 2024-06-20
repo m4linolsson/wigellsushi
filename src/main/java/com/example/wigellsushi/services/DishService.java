@@ -9,28 +9,25 @@ import com.example.wigellsushi.repositories.DishRepository;
 import com.example.wigellsushi.repositories.TakeAwayRepository;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.hibernate.query.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.function.UnaryOperator;
 
 @Service
 public class DishService implements DishServiceInterface {
     @Autowired
-    DishRepository dishRepository;
+    private DishRepository dishRepository;
     @Autowired
-    TakeAwayRepository takeAwayRepository;
+    private TakeAwayRepository takeAwayRepository;
     @Autowired
-    BookingRepository bookingRepository;
+    private BookingRepository bookingRepository;
 
-    Logger logger = Logger.getLogger(DishService.class);
+    private Logger logger = Logger.getLogger(DishService.class);
 
     @Override
     public List<Dish> getDishes() {
         return dishRepository.findAll();
-
     }
 
     @Override
@@ -49,14 +46,11 @@ public class DishService implements DishServiceInterface {
 
         for (Takeaway takeaway : takeAwayRepository.findAll()) {
             takeaway.getDishes().removeIf(dish -> dish.equals(dishToRemove));
-
-            // takeaway.getDishes().remove(dishToRemove);
             takeAwayRepository.save(takeaway);
         }
 
         for (Booking booking : bookingRepository.findAll()) {
             booking.getDishes().removeIf(dish -> dish.equals(dishToRemove));
-            // booking.getDishes().remove(dishToRemove);
             bookingRepository.save(booking);
         }
         dishRepository.delete(dishToRemove);

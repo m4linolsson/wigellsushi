@@ -12,13 +12,12 @@ public class WigellSushiApplication {
     public static void main(String[] args) {
         SpringApplication.run(WigellSushiApplication.class, args);
         System.out.println("tweet tweet");
-
-
     }
 
-    //Gör att vi kan
+
     @Bean
-    @LoadBalanced //säger att vi ska använda en loadbalancer client (ex eureka) så vi kan använda service name i url ist för host och port...
+  //  @LoadBalanced //säger att vi ska använda en loadbalancer client (ex eureka) så vi kan använda service name i url ist för host och port... funkar i postman med localhost 7070 min inte här...
+    //funkar inte med loadbalaned oavsett koppling till gateway
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }

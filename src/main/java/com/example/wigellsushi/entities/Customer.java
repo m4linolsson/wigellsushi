@@ -11,11 +11,17 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column (length = 20,nullable = false)
     private String userName;
+    @Column (length = 20,nullable = false)
     private String firstName;
+    @Column (length = 20,nullable = false)
     private String lastName;
+    @Column (nullable = false)
     private String address;
+    @Column (length = 35,nullable = false)
     private String email;
+    @Column (length = 20,nullable = false)
     private String phone;
 
     @JsonIgnoreProperties("customer")

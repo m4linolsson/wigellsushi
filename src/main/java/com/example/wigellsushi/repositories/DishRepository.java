@@ -6,6 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DishRepository extends JpaRepository<Dish, Long> {
-//    Dish findDishByDishName(String dishName);
 boolean existsByDishName(String dishName);
 }

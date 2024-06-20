@@ -14,23 +14,23 @@ import java.util.List;
 public class DishController {
 
     @Autowired
-    DishService dishService;
+    private DishService dishService;
 
     @GetMapping("/sushis")
-    @PreAuthorize("hasRole('user')")
+    @PreAuthorize("hasRole('USER')")
     public ResponseEntity<List<Dish>> getDishes() {
         return ResponseEntity.ok(dishService.getDishes());
     }
 
     @PostMapping("/add-dish")
-    @PreAuthorize("hasRole('admin')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> addDish(@RequestBody Dish dish) {
         return ResponseEntity.ok(dishService.addDish(dish));
     }
 
 
     @DeleteMapping("/deletedish/{id}")
-    @PreAuthorize("hasRole('admin')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> deleteDish(@PathVariable Long id) {
         return ResponseEntity.ok(dishService.deleteDish(id));
     }
